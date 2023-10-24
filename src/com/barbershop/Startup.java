@@ -6,6 +6,7 @@ import com.barbershop.controller.ScheduleController;
 import com.barbershop.model.Barber;
 import com.barbershop.model.Client;
 import com.barbershop.model.Scheduling;
+import com.barbershop.model.types.ServicesType;
 import com.barbershop.repository.SchedulesRepository;
 
 public class Startup {
@@ -15,10 +16,10 @@ public class Startup {
 		Client c2 = new Client("Kleber");
 		Barber b1 = new Barber("Pedro");
 		
-		Scheduling s1 = new Scheduling(new Date(2023, 12, 1, 14, 0), c1, b1);
+		Scheduling s1 = new Scheduling(new Date(2023, 12, 1, 14, 0), c1, b1, ServicesType.HAIR);
 		ScheduleController.createScheduling(s1);
 		
-		Scheduling s2 = new Scheduling(new Date(2023, 12, 2, 14, 0), c2, b1);
+		Scheduling s2 = new Scheduling(new Date(2023, 12, 1, 14, 0), c2, b1, ServicesType.HAIR);
 		ScheduleController.createScheduling(s2);
 		
 		SchedulesRepository.schedules.forEach(a -> System.out.println(a.toString()));

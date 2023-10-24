@@ -2,17 +2,21 @@ package com.barbershop.model;
 
 import java.util.Date;
 
+import com.barbershop.model.types.ServicesType;
+
 public class Scheduling {
 	
 	private Date date;
 	private Client client;
 	private Barber barber;
+	private ServicesType serviceType;
 	
-	public Scheduling(Date date, Client client, Barber barber) {
+	public Scheduling(Date date, Client client, Barber barber, ServicesType serviceType) {
 		super();
 		this.date = date;
 		this.client = client;
 		this.barber = barber;
+		this.serviceType = serviceType;
 	}
 	
 	public Date getDate() {
@@ -37,6 +41,14 @@ public class Scheduling {
 
 	public void setBarber(Barber barber) {
 		this.barber = barber;
+	}
+
+	public ServicesType getServiceType() {
+		return serviceType;
+	}
+
+	public void setServiceType(ServicesType serviceType) {
+		this.serviceType = serviceType;
 	}
 
 	public String toString() {
