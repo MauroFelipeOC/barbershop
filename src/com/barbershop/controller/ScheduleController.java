@@ -5,8 +5,8 @@ import com.barbershop.service.ScheduleServices;
 
 public class ScheduleController {
 	
-	public static boolean createScheduling(Scheduling scheduling) {
-		return ScheduleServices.save(scheduling);
+	public static void createScheduling(Scheduling scheduling) {
+		ScheduleServices.save(scheduling);
 	}
 
 }
