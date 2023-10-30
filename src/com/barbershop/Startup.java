@@ -19,8 +19,8 @@ public class Startup {
 		Barber b1 = new Barber("Mariah");
 		
 		LocalDate ld1 = LocalDate.of(2023, Month.JULY, 8);
-		LocalTime lt1 = LocalTime.of(14, 20);
-		LocalDate ld2 = LocalDate.of(2023, Month.JULY, 9);
+		LocalTime lt1 = LocalTime.of(14, 50);
+		LocalDate ld2 = LocalDate.of(2023, Month.JULY, 8);
 		LocalTime lt2 = LocalTime.of(14, 20);
 		
 		Scheduling s1 = new Scheduling(ld1, lt1, c1, b1, ServicesType.HAIR);
