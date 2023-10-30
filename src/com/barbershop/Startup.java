@@ -1,6 +1,8 @@
 package com.barbershop;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
 
 import com.barbershop.controller.ScheduleController;
 import com.barbershop.model.Barber;
@@ -16,10 +18,15 @@ public class Startup {
 		Client c2 = new Client("Erick");
 		Barber b1 = new Barber("Mariah");
 		
-		Scheduling s1 = new Scheduling(new Date(2023, 12, 1, 14, 0), c1, b1, ServicesType.HAIR);
+		LocalDate ld1 = LocalDate.of(2023, Month.JULY, 8);
+		LocalTime lt1 = LocalTime.of(14, 20);
+		LocalDate ld2 = LocalDate.of(2023, Month.JULY, 9);
+		LocalTime lt2 = LocalTime.of(14, 20);
+		
+		Scheduling s1 = new Scheduling(ld1, lt1, c1, b1, ServicesType.HAIR);
 		ScheduleController.createScheduling(s1);
 		
-		Scheduling s2 = new Scheduling(new Date(2023, 12, 1, 14, 0), c2, b1, ServicesType.HAIR_AND_BEARD);
+		Scheduling s2 = new Scheduling(ld2, lt2, c2, b1, ServicesType.HAIR_AND_BEARD);
 		ScheduleController.createScheduling(s2);
 		
 		SchedulesRepository.schedules.forEach(a -> System.out.println(a.toString()));
