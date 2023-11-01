@@ -29,7 +29,7 @@ public class Startup {
 		Scheduling s2 = new Scheduling(ld2, lt2, c2, b1, ServicesType.HAIR_AND_BEARD);
 		ScheduleController.createScheduling(s2);
 		
-		SchedulesRepository.schedules.forEach(a -> System.out.println(a.toString()));
+		SchedulesRepository.schedules.forEach(System.out::println);
 		
 	}
 }
