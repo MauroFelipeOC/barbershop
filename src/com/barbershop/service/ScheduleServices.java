@@ -11,6 +11,10 @@ public class ScheduleServices {
 
 	private static Set<Scheduling> schedules = SchedulesRepository.schedules;
 
+	/**
+	 * Saves a new scheduling in the schedule's repository
+	 * @param scheduling - scheduling to save
+	 * **/
 	public static void save(Scheduling scheduling) {
 
 		Scheduling conflictingSchedule = ScheduleUtil.verifyScheduleConflict(scheduling, schedules);
