@@ -4,17 +4,47 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import com.barbershop.model.types.ServicesType;
 
+@Entity
+@Table(name = "schedules")
 public class Scheduling {
 	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	private LocalDate date;
 	private LocalTime time;
+	@ManyToOne
+	@JoinColumn(name = "client_id")
 	private Client client;
+	@ManyToOne
+	@JoinColumn(name = "barber_id")
 	private Barber barber;
+	@Column(name = "service_type")
+	@Enumerated(EnumType.STRING)
 	private ServicesType serviceType;
+	@Column(name = "creation_time")
 	private LocalDateTime createdTime;	
 
+	/**
+	 * Create a new scheduling
+	 * @param  date
+	 * @param  time
+	 * @param  client
+	 * @param  barber
+	 * @param  serviceType
+	 * **/
 	public Scheduling(LocalDate date, LocalTime time, Client client, Barber barber, ServicesType serviceType) {
 		super();
 		this.date = date;
