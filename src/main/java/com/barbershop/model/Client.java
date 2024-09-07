@@ -29,5 +29,9 @@ public class Client {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String toString() {
+		return id + ", " + name;
+	}
 
 }

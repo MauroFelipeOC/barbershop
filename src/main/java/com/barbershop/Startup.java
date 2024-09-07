@@ -17,6 +17,9 @@ import com.barbershop.model.Barber;
 import com.barbershop.model.Client;
 import com.barbershop.model.Scheduling;
 import com.barbershop.model.types.ServicesType;
+import com.barbershop.repository.BarberDAO;
+import com.barbershop.service.BarberServices;
+import com.barbershop.service.ClientServices;
 
 public class Startup {
 	
@@ -41,14 +44,23 @@ public class Startup {
 //		scheduleController.createScheduling(s2);
 //		
 //		scheduleController.listAll().forEach(System.out::println);
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("barber");
-		EntityManager em = emf.createEntityManager();
 		
-		Barber b1 = em.find(Barber.class, 1L);
+		BarberDAO barberDAO = new BarberDAO();
+		BarberServices barberServices = ctx.getBean(BarberServices.class);
+		Barber b1 = barberServices.findById(1L);
 		System.out.println(b1);
 		
-		em.close();
-		emf.close();
+		ClientServices clientServices = ctx.getBean(ClientServices.class);
+		Client c1 = clientServices.findById(5L);
+		System.out.println(c1);
+		barberDAO.close();
+		
+		LocalDate ld1 = LocalDate.of(2025, Month.JULY, 9);
+		LocalTime lt1 = LocalTime.of(13, 30);
+		
+		Scheduling s1 = new Scheduling(ld1, lt1, c1, b1, ServicesType.HAIR_AND_BEARD);
+		scheduleController.createScheduling(s1);
+		
 		
 	}
 }

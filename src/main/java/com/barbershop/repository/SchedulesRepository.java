@@ -8,8 +8,12 @@ import org.springframework.stereotype.Component;
 import com.barbershop.model.Scheduling;
 
 @Component
-public class SchedulesRepository {
+public class SchedulesRepository extends DAO<Scheduling> {
 	
 	public Set<Scheduling> schedules = new HashSet<>();
-
+	
+	public SchedulesRepository() {
+		super(Scheduling.class);
+	}
+	
 }

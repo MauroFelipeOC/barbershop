@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.barbershop.model.types.ServicesType;
 
 @Entity
@@ -35,6 +37,7 @@ public class Scheduling {
 	@Enumerated(EnumType.STRING)
 	private ServicesType serviceType;
 	@Column(name = "creation_time")
+	@CreationTimestamp
 	private LocalDateTime createdTime;	
 
 	/**

@@ -25,12 +25,13 @@ public class ScheduleServices {
 	public void save(Scheduling scheduling) {
 
 		// TODO criar classe para validações de negócio
-		Scheduling conflictingSchedule = ScheduleUtil.verifyScheduleConflict(scheduling, schedulesRepository.schedules);
-		if (conflictingSchedule != null) {
-			throw new ScheduleConflictException(conflictingSchedule, scheduling);
-		}
+//		Scheduling conflictingSchedule = ScheduleUtil.verifyScheduleConflict(scheduling, schedulesRepository.schedules);
+//		if (conflictingSchedule != null) {
+//			throw new ScheduleConflictException(conflictingSchedule, scheduling);
+//		}
 
-		schedulesRepository.schedules.add(scheduling);
+//		schedulesRepository.schedules.add(scheduling);
+		schedulesRepository.addAtomic(scheduling);
 	}
 	
 	public Set<Scheduling> listAll(){
