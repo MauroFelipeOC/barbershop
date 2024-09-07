@@ -24,7 +24,7 @@ public class Startup {
 	public static void main(String[] args) {
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(MyConfig.class);
 //		ScheduleController scheduleController = new ScheduleController();
-//		ScheduleController scheduleController = ctx.getBean(ScheduleController.class);
+		ScheduleController scheduleController = ctx.getBean(ScheduleController.class);
 //		Client c1 = new Client("John");
 //		Client c2 = new Client("Erick");
 //		Barber b1 = new Barber("Mariah");
