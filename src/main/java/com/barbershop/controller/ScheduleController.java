@@ -1,6 +1,10 @@
 package com.barbershop.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +14,7 @@ import com.barbershop.model.Scheduling;
 import com.barbershop.service.ScheduleServices;
 
 @RestController()
-@RequestMapping("/agendamento")
+@RequestMapping("/schedule")
 public class ScheduleController {
 	
 	@Autowired
@@ -22,9 +26,14 @@ public class ScheduleController {
 	 *         scheduling to be created
 	 * **/
 	@PostMapping
-	public void createScheduling(@RequestBody Scheduling scheduling) {
+	public Scheduling createScheduling(@RequestBody Scheduling scheduling) {
 		// TODO: validar formato
-		scheduleServices.save(scheduling);
+		return scheduleServices.save(scheduling);
+	}
+	
+	@GetMapping("/{id}")
+	public List<Scheduling> findAllByClientId(@PathVariable Long id) {
+		return scheduleServices.findAllByClientId(id);
 	}
 	
 }

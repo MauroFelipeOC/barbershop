@@ -1,14 +1,13 @@
 package com.barbershop.service;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.barbershop.exception.ScheduleConflictException;
 import com.barbershop.model.Scheduling;
 import com.barbershop.repository.SchedulesRepository;
-import com.barbershop.service.util.ScheduleUtil;
 
 @Service
 public class ScheduleServices {
@@ -22,7 +21,7 @@ public class ScheduleServices {
 	 * Saves a new scheduling in the schedule's repository
 	 * @param scheduling - scheduling to save
 	 * **/
-	public void save(Scheduling scheduling) {
+	public Scheduling save(Scheduling scheduling) {
 
 		// TODO criar classe para validações de negócio
 //		Scheduling conflictingSchedule = ScheduleUtil.verifyScheduleConflict(scheduling, schedulesRepository.schedules);
@@ -31,11 +30,15 @@ public class ScheduleServices {
 //		}
 
 //		schedulesRepository.schedules.add(scheduling);
-		schedulesRepository.addAtomic(scheduling);
+		return schedulesRepository.addAtomic(scheduling);
 	}
 	
 	public Set<Scheduling> listAll(){
 		return schedulesRepository.schedules;
+	}
+
+	public List<Scheduling> findAllByClientId(Long clientId) {
+		return schedulesRepository.findAllByClientId(clientId);
 	}
 
 }

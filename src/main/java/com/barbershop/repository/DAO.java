@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 public abstract class DAO<E> {
 	
 	private static EntityManagerFactory emf;
-	private EntityManager em;
+	protected EntityManager em;
 	private Class<E> entity;
 	
 	static {

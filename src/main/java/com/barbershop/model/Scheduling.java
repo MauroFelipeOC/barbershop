@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,10 +28,10 @@ public class Scheduling {
 	private long id;
 	private LocalDate date;
 	private LocalTime time;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "client_id")
 	private Client client;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "barber_id")
 	private Barber barber;
 	@Column(name = "service_type")
@@ -38,7 +39,9 @@ public class Scheduling {
 	private ServicesType serviceType;
 	@Column(name = "creation_time")
 	@CreationTimestamp
-	private LocalDateTime createdTime;	
+	private LocalDateTime createdTime;
+	
+	Scheduling() {}
 
 	/**
 	 * Create a new scheduling

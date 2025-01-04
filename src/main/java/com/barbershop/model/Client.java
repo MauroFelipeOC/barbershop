@@ -21,6 +21,11 @@ public class Client {
 		super();
 		this.name = name;
 	}
+	
+	public Client(Integer id) {
+		super();
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -30,6 +35,14 @@ public class Client {
 		this.name = name;
 	}
 	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String toString() {
 		return id + ", " + name;
 	}
