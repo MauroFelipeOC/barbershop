@@ -9,7 +9,6 @@ public class ClientDAO extends DAO<Client> {
 	
 	public ClientDAO() {
 		super(Client.class);
-		System.out.println("teste");
 	}
 
 }

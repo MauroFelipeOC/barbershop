@@ -18,6 +18,7 @@ public abstract class DAO<E> {
 			emf = Persistence.createEntityManagerFactory("barber");
 		} catch (Exception e) {
 			System.out.println("An error ocurred while attempt to create entity manager");
+			System.out.println(e);
 		}
 	}
 	
@@ -49,8 +50,9 @@ public abstract class DAO<E> {
 		return this;
 	}
 	
-	public DAO<E> addAtomic(E entity) {
-		return this.openTransaction().add(entity).closeTransaction();
+	public E addAtomic(E entity) {
+		this.openTransaction().add(entity).closeTransaction();
+		return entity;
 	}
 	
 	public E getById(Object id) {

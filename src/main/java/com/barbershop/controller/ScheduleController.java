@@ -1,15 +1,16 @@
 package com.barbershop.controller;
 
-import java.time.LocalDateTime;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.barbershop.model.Scheduling;
 import com.barbershop.service.ScheduleServices;
 
-@Component
+@RestController()
+@RequestMapping("/agendamento")
 public class ScheduleController {
 	
 	@Autowired
@@ -20,13 +21,10 @@ public class ScheduleController {
 	 * @param  scheduling
 	 *         scheduling to be created
 	 * **/
-	public void createScheduling(Scheduling scheduling) {
+	@PostMapping
+	public void createScheduling(@RequestBody Scheduling scheduling) {
 		// TODO: validar formato
 		scheduleServices.save(scheduling);
 	}
 	
-	public Set<Scheduling> listAll(){
-		return scheduleServices.listAll();
-	}
-
 }

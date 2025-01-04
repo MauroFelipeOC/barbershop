@@ -16,4 +16,8 @@ public class ClientServices {
 		return clientDAO.getById(id);
 	}
 
+	public Client save(Client client) {
+		return clientDAO.addAtomic(client);
+	}
+
 }
