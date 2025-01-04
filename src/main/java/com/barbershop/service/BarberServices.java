@@ -15,5 +15,9 @@ public class BarberServices {
 	public Barber findById(long id) {
 		return barberDAO.getById(id);
 	}
+	
+	public Barber save(Barber barber) {
+		return barberDAO.addAtomic(barber);
+	}
 
 }
